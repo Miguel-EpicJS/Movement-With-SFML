@@ -5,3 +5,7 @@ Use `Arrows keys` for movement
 
 And `S` increase the size
 `W` reduce the size
+
+**Preview**
+
+![gif.gif]
