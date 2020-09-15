@@ -3,8 +3,8 @@ A simple circle movement and resize engine
 
 Use `Arrows keys` for movement 
 
-And `S` increase the size
-`W` reduce the size
+And `W` increase the size
+`S` reduce the size
 
 **Preview**
 
