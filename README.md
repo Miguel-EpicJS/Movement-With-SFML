@@ -8,4 +8,4 @@ And `S` increase the size
 
 **Preview**
 
-![gif.gif]
+![](gif.gif)
