@@ -3,8 +3,10 @@
 
 int main()
 {
-	float size = 2.f;
-	float speed = 40.f; 
+	float increase = 1.2f;
+	float decrease = 0.8f;
+	float speed = 40.f;
+
 
 	sf::RenderWindow window(sf::VideoMode(1200, 800), "SFML works!");
 	sf::CircleShape shape(100.f);
@@ -25,10 +27,10 @@ int main()
 					switch(event.key.code)
 					{
 						case sf::Keyboard::W:
-							shape.scale(1.2f, 1.2f);
+							shape.scale(increase, increase);
 							break;
 						case sf::Keyboard::S:
-							shape.scale(0.8f, 0.8f);
+							shape.scale(decrease, decrease);
 							break;
 						case sf::Keyboard::Up:
 							shape.move(0, -speed);
