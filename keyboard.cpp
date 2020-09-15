@@ -1,54 +1,56 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 
-using namespace std;
-
 int main()
 {
-    float x = 100.f;
-    float posX = 200.f; 
-    float posY = 200.f;
-    sf::RenderWindow window(sf::VideoMode(1200, 800), "SFML works!");
-    sf::CircleShape shape(x);
-    shape.setFillColor(sf::Color::Green);
-    
-    while (window.isOpen())
-    {
-        sf::CircleShape shape(x);
-        sf::Event event;
-        while (window.pollEvent(event))
-        {
-            if (event.type == sf::Event::Closed)
-                window.close();
-        }
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::W))
-        {
-            x += 0.3;
-        }
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-        {
-            x -= 0.3;
-        }
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
-        {
-            posY--;
-        }
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
-        {
-            posY++;
-        }
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-        {
-            posX++;
-        }
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-        {
-            posX--;
-        }
-        shape.setPosition(posX, posY);
-        window.clear();
-        window.draw(shape);
-        window.display();
+	float size = 2.f;
+	float speed = 40.f; 
+
+	sf::RenderWindow window(sf::VideoMode(1200, 800), "SFML works!");
+	sf::CircleShape shape(100.f);
+	shape.setScale(1.f, 1.f);
+
+	while (window.isOpen())
+	{
+		sf::Event event;
+		while (window.pollEvent(event))
+		{
+			switch(event.type)
+			{
+				case sf::Event::Closed:
+					window.close();
+					break;
+				
+				case sf::Event::KeyPressed:
+					switch(event.key.code)
+					{
+						case sf::Keyboard::W:
+							shape.scale(1.2f, 1.2f);
+							break;
+						case sf::Keyboard::S:
+							shape.scale(0.8f, 0.8f);
+							break;
+						case sf::Keyboard::Up:
+							shape.move(0, -speed);
+							break;
+						case sf::Keyboard::Down:
+							shape.move(0, speed);
+							break;
+
+						case sf::Keyboard::Right:
+							shape.move(speed, 0);
+							break;
+						case sf::Keyboard::Left:
+							shape.move(-speed, 0);
+							break;
+					}
+					break;
+
+			}
+		}
+		window.clear();
+		window.draw(shape);
+		window.display();
     }
 
     return 0;
